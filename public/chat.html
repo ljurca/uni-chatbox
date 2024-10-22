@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--  Roboto font family  -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>Chat Interface</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- Add this line -->
+
+</head>
+<body>
+<div id="chat-container">
+  <div class="header">
+    <div class="grp-img">
+      <img id="ai-avatar" src="https://cdn.glitch.global/75bcfb9b-05b5-4a7c-a5be-e94c063e143f/avatar.jpg?v=1727042473922" alt="">
+    </div>
+    <div id="chatbot-info">
+      <h3 id="chatbot-name">
+        AI ChatBot
+      </h3>
+      <p class="chatbot-status">
+        We typically reply...instantly!
+      </p>
+    </div>
+  </div>
+
+  <div id="messages">
+
+  </div>
+  <!-- Message Input Container -->
+  <div class="message-input-container">
+    <input type="text" id="user-input" placeholder="type your message here..." />
+    <btn type="submit" class="send-btn" id="send-btn">
+      <ion-icon name="send-outline"></ion-icon>
+    </btn>
+  </div>
+  </div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

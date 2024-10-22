@@ -1,0 +1,230 @@
+/* Overall styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  transition: ease 0.5s;
+}
+
+body {
+  background: lightgrey; /* Light grey background */
+  color: white; /* Black text */
+}
+
+.header {
+  background: #00543c; /* Changed to #00543c */
+  display: flex;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
+  font-weight: 500; /* Medium weight for header */
+  border: 1px solid #00543c; /* Changed to #00543c */
+}
+
+#chat-container {
+  width: 100%;
+  max-width: 95%;
+  height: 95vh; /* Set height to 95% of the viewport height */
+  background: transparent; /* No background */
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 10px;
+  position: relative;
+  border: 1px solid #00543c; /* Changed to #00543c */
+  display: flex;
+  flex-direction: column; /* Align children vertically */
+}
+
+/* Chatbox */
+#messages {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1; /* Allow #messages to grow and fill available space */
+  overflow-y: auto;
+  border-bottom: 1px solid #00543c; /* Changed to #00543c */
+}
+
+#messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+  background-color: #00543c; /* Changed to #00543c */
+}
+
+#messages::-webkit-scrollbar-thumb:hover {
+  background-color: darkgrey; /* Dark grey on hover */
+}
+
+.ai-message ion-icon {
+  position: absolute;
+  left: -14px;
+}
+
+.user-message ion-icon {
+  position: absolute;
+  right: -14px;
+  transform: rotate(180deg);
+}
+
+.send-btn ion-icon {
+  font-size: 24px;
+}
+
+.chat img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: solid 2px #00543c; /* Changed to #00543c */
+}
+
+.chat .msg {
+  background: lightgrey; /* Light grey background for messages */
+  max-width: 80%;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+  font-size: 14px; /* Slightly larger for better readability */
+  font-weight: 400; /* Regular weight for messages */
+  border: 1px solid #00543c; /* Changed to #00543c */
+}
+
+.chat.even {
+  flex-direction: row;
+}
+
+.chat.user {
+  flex-direction: row-reverse;
+}
+
+.chat .msg ion-icon {
+  font-size: 20px;
+  color: #00543c; /* Changed to #00543c */
+  position: absolute;
+  top: 10px;
+}
+
+.chat .msg ion-icon.left {
+  left: -14px;
+}
+
+.chat .msg ion-icon.right {
+  right: -14px;
+}
+
+/* Message Input Container */
+.message-input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #00543c; /* Changed to #00543c */
+  border-radius: 0 0 10px 10px;
+  border: 1px solid #00543c; /* Changed to #00543c */
+  width: 100%; /* Adjust to fill the width of the container */
+  margin: 0 auto; /* Center it horizontally */
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #00543c; /* Changed to #00543c */
+  border-radius: 20px;
+  outline: none;
+  background-color: lightgrey; /* Light grey background */
+  color: black; /* Black text */
+  font-weight: 400; /* Regular weight for input text */
+}
+
+.message-input-container input::placeholder {
+  color: grey; /* Grey placeholder text */
+  font-weight: 300; /* Light weight for placeholder text */
+}
+
+/* Send button */
+.send-btn {
+  margin-left: 10px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent; /* No background */
+  border: 1px solid #00543c; /* Changed to #00543c */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-btn:hover ion-icon {
+  transform: rotate(360deg);
+}
+
+.grp-img {
+  position: relative;
+  width: 125px;
+  height: 45px;
+}
+
+.grp-img img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: solid 2px #00543c; /* Changed to #00543c */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chat {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Chat for AI messages (left side) */
+.ai-message {
+  display: flex;
+  justify-content: flex-start; /* Align AI messages to the left */
+}
+
+.ai-message .msg {
+  background-color: #00543c; /* Changed to #00543c */
+  color: white; /* White text */
+  margin-left: -10px;
+  border: 1px solid #00543c; /* Changed to #00543c */
+  border-radius: 10px; /* Rounded corners */
+  padding: 10px;
+  max-width: 80%;
+  font-size: 14px; /* Ensure readability */
+}
+
+/* Chat for user messages (right side) */
+.user-message {
+  display: flex;
+  justify-content: flex-end; /* Align user messages to the right */
+}
+
+.user-message .msg {
+  background-color: #00543c; /* Changed to #00543c */
+  color: white; /* White text */
+  margin-right: 10px;
+  border: 1px solid #00543c; /* Changed to #00543c */
+  border-radius: 10px; /* Rounded corners */
+  padding: 10px;
+  max-width: 80%;
+  font-size: 14px; /* Ensure readability */
+}
+
+/* Adjust avatars */
+.ai-message img {
+  margin-right: 10px;
+}
+
+.user-message img {
+  margin-left: 10px;
+}
