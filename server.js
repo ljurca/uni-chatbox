@@ -146,8 +146,8 @@ app.post('/log-event', async (req, res) => {
     }
 });
 
-// 5. Listen on a port (3000)
-const PORT = 3000;
+// 5. Listen on the port specified by Render
+const PORT = process.env.PORT || 3000; // Fallback to 3000 if PORT is not set
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
