@@ -1,0 +1,8 @@
+SUBJ,CRSE NUM,SEC,CRN,Schedule Type Code,Campus Code,Title Short Desc,Instruction Mode Desc,Meeting Type Codes,Meet Days,Begin Time,End Time,Meet Start,Meet End,BLDG,RM,Actual Enrollment,Primary Instructor First Name,Primary Instructor Last Name,Primary Instructor Email,College
+AAS,100,01,42180,SEM,M,Black Activists & Visionaries,In-Person,IP,MW,1645,1825,8/20/24,12/4/24,LM,140,30,Sheryl,Davis,sedavis2@usfca.edu,LA
+AAS,400,01,42476,CAP,M,Black Scholars Capstone Part I,In-Person,IP,W,1030,1210,8/20/24,12/4/24,LM,152,7,Emille,Lawrence,edlawrence@usfca.edu,LA
+ADVT,101,01,40322,L,M,Rhetoric and Consumer Culture,In-Person,IP,TR,1440,1625,8/20/24,12/3/24,KA,167,22,Leigh,Meredith,lmeredith@usfca.edu,LA
+ADVT,201,01,40323,L,M,Fund. of Creative Strategy,In-Person,IP,TR,0955,1140,8/20/24,12/3/24,MA,122,21,Marthinus Johannes Coetzee,Van Loggerenberg,mvanloggerenberg@usfca.edu,LA
+ADVT,202,01,40324,L,M,Fund. of Creative Development,In-Person,IP,M,1145,1525,8/20/24,12/2/24,ED,306,14,Mukul,Bakshi,mbakshi4@usfca.edu,LA
+ADVT,302,01,40325,L,M,Innovation in Advertising,In-Person,IP,R,1635,2015,8/20/24,11/28/24,MA,123,27,Susan,Barnes,smbarnes2@usfca.edu,LA
+ADVT,320,01,40326,L,M,Copywriting,In-Person,IP,W,1145,1525,8/20/24,12/4/24,MA,228,20,David,Ulrich,daulrich@usfca.edu,LA
