@@ -1,0 +1,623 @@
+Program Learning Outcomes
+Theory: Explain and analyze standard computer science algorithms and describe and analyze theoretical aspects of various programming languages
+Application: Apply problem-solving skills to implement medium and large scale programs in a variety of programming languages
+Systems: Describe the interactions between low-level hardware, operating systems, and applications
+Project: Demonstrate effective communication and organization as part of a team of software developers or researchers collaborating on a large computer program
+Major Requirements (52 units)
+20 units of lower division courses, 20 units of upper division courses, and 12 units of mathematics
+
+Students majoring in Computer Science must earn a grade of C or better in MATH 201, MATH 202, and all of the computer science courses fulfilling requirements for the major. A student can repeat no more than two Mathematics or Computer Science courses required in the major, and a course can be repeated only one time. A withdrawal counts as an attempt at a course without passing or earning a minimum grade required in the course.
+
+Lower Division (20 units)
+CS 111 - Foundations of Program Design
+CS 112 - Intro to Computer Science II
+CS 272 - Software Development
+and
+CS 272L - Software Development Lab
+CS 220 - Intro to Parallel Computing
+or
+CS 221 - C and Systems Programming
+CS 245 - Data Struct & Algorithms
+Upper Division (20 units)
+Systems Area (8 units - 2 courses)
+Complete 8 units from the following:
+
+CS 315 - Computer Architecture
+CS 326 - Operating Systems
+CS 336 - Computer Networks
+Theory and Languages Area (4 units - 1 course)
+Complete 4 units from the following:
+
+CS 345 - Prog Language Paradigms
+CS 362 - Foundations of AI
+CS 411 - Automata Theory
+CS 414 - Compilers
+Applications Area (4 units - 1 course)
+Complete 4 units in any 300 or 400 level CS course except CS 398 or CS 498 (i.e., Directed Reading and Research may not be used to fulfill this requirement)
+
+Graduate classes can be taken to fulfill the Systems/Theory/Applications requirements with the approval of the department chair.
+
+CS 333 - Intro to Database Systems
+CS 336 - Computer Networks
+CS 360 - Data Visualization
+CS 384 - Research Seminar in CS
+CS 385 - Special Lecture Series in CS
+CS 386 - Sp Topics in Computer Sci
+CS 419 - Computer Graphics
+CS 420 - Game Engineering
+CS 451 - Data Mining
+CS 462 - Intro to AI
+CS 463 - Machine Learning
+CS 486 - Special Topics in Computer Sci
+Project (4 units - 1 course)
+CS 490 - Senior Team Project
+Math Requirement (12 units)
+MATH 109 - Calculus & Analytic Geom I (a minimum grade of D- or higher)
+MATH 201 - Discrete Mathematics
+MATH 202 - Linear Algebra & Probability
+Science Core Requirement
+Computer Science students must take one of the following classes for Core B2:
+
+BIOL 103 - Human Biology
+BIOL 105 - Gen Biology - Molec of Life
+BIOL 106 - Gen Biology - Diversity of Life
+CHEM 106 - Chemistry in the Community
+CHEM 110 - Molecular Gastronomy
+CHEM 111 - General Chemistry I
+CHEM 113 - General Chemistry II
+ENVS 100 - Understand our Environ w/Lab
+ENVS 110 - Intro to Envir. Science w/Lab
+PHYS 100 - Introductory Physics I
+PHYS 101 - Introductory Physics II
+PHYS 110 - General Physics I
+PHYS 210 - General Physics II
+Degree Planner
+First-Year
+Fall	Units
+CS 111: Introduction to Computer Science I in Java	4
+Core B1: MATH 109 - Calculus & Analytic Geom I (Prerequisite MATH 108 - Precalculus)	4
+Core - Composition recommended	4
+Core or First Year Seminar	4
+Total Semester Units	16
+Spring	Units
+CS 112 - Intro to Computer Science II 	4
+MATH 201 - Discrete Mathematics 	4
+Core - Public Speaking or Rhetoric and Composition recommended	4
+Core	4
+Total Semester Units	16
+Sophomore Year
+Fall	Units
+CS 221 - C and Systems Programming 	4
+MATH 202 - Linear Algebra & Probability 	4
+Core or Language - Course 1	4
+Core or Science requirement	4
+Total Semester Units	16
+Spring	Units
+Core	4
+CS 245 - Data Struct & Algorithms 	4
+Core or Language - Course 2	4
+Core	4
+Total Semester Units	16
+Junior Year
+Fall	Units
+CS 315 - Computer Architecture 	4
+Theory requirement	4
+Core	4
+Core	4
+Total Semester Units	16
+Spring	Units
+CS 272 - Software Development 	4
+ Applications requirement	4
+Core	4
+Core	4
+Total Semester Units	16
+Senior Year
+Fall	Units
+CS 490 - Senior Team Project 	4
+Systems requirement	4
+Core/Elective	4
+Core/Elective	4
+Total Semester Units	16
+Spring	Units
+Core/Elective	4
+Core/Elective	4
+Core/Elective	4
+Core/Elective	4
+Total Semester Units	16
+*This information is subject to change, the degree planner is a sample, and students should consult with the department for any updated information. 
+
+CS 111 - Foundations of Program Design
+Unit(s): 4
+
+Introduction to program design and computation using Java. Topics include fundamental programming concepts such as iteration, conditionals, variables and data types, objects, and arrays.
+
+
+Prerequisite: CS 110 with a minimum grade of D
+College of Arts and Sciences
+
+CS 112 - Intro to Computer Science II
+Unit(s): 4
+
+Design and development of significantly sized software using top-down design and bottom-up implementation. Dynamically allocated data, object-oriented programming, architecture of memory, basics of language translation, and basics of algorithm analysis. Development of simple graphical user interfaces. Four hours lecture. Offered Fall and Spring.
+
+
+Prerequisite: CS 110 with a minimum grade of C
+College of Arts and Sciences
+
+CS 272 - Software Development
+Unit(s): 4
+
+Advanced programming topics including inheritance and polymorphism, multi-threaded programming, networking, database programming, and web development. Techniques for debugging, refactoring, and reviewing code.
+
+
+Prerequisite: CS 245 with a minimum grade of C
+Corequisite: CS-272L
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1) Major, Computer Science Minor
+College of Arts and Sciences
+
+
+CS 272L - Software Development Lab
+Unit(s): 0
+
+0 unit lab course associated with CS 272 Software Development.
+
+
+Corequisite: CS-272
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1) Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 220 - Intro to Parallel Computing
+Unit(s): 4
+
+Introduction to the C programming language. Overview of parallel architectures. Programming shared and distributed memory parallel computers. Parallel program performance evaluations. Four hours lecture. Offered every Fall.
+
+
+Prerequisite: CS 112 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1) Major, Computer Science Minor
+College of Arts and Sciences
+
+
+Visit USFCA Website
+Apply
+ 
+Visit
+ 
+Athletics
+ 
+Alumni
+ 
+Giving
+ 
+Select a Catalog
+2024-2025 Catalog
+ 		 
+Add to My Favorites (opens a new window)
+Print (opens a new window)
+Help (opens a new window)
+Add to Portfolio (opens a new window)
+CS 221 - C and Systems Programming
+Unit(s): 4
+
+Introduction to the C programming language and UNIX/Linux systems programming. Pointers in C, libraries, devices, processes, threads, system calls, memory management, and interprocess communication with sockets.
+
+
+Prerequisite: CS 112 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1) Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 245 - Data Struct & Algorithms
+Unit(s): 4
+
+Algorithm analysis and asymptotic running time calculations. Algorithm design techniques and implementation details. Algorithms for sorting and searching, trees, graphs, and other selected topics. Four hours lecture. Offered every Spring.
+
+
+Prerequisite: (MATH 235 with a minimum grade of C or MATH 201 with a minimum grade of C) and CS 112 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 315 - Computer Architecture
+Unit(s): 4
+
+Performance analysis techniques, instruction set design, computer arithmetic, digital design, processor implementation, and memory systems. Performance enhancement using pipelining and cache memory. Four hours lecture and two hours lab.
+
+
+Prerequisite: (CS 220 with a minimum grade of C or CS 221 with a minimum grade of C) and CS 245 with a minimum grade of C
+Corequisite: CS-315L
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 326 - Operating Systems
+Unit(s): 4
+
+The design and implementation of operating systems. Study of processes, threads, scheduling, synchronization, interprocess communication, device drivers, memory management, and file systems. Four hours lecture and two hour lab. Offered every Fall.
+
+
+Prerequisite: (CS 220 with a minimum grade of C or CS 221 with a minimum grade of C) and (CS 245 with a minimum grade of C)
+Corequisite: CS-326L
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+
+CS 336 - Computer Networks
+Unit(s): 4
+
+Current methods and practices in the use of computer networks to enable communication. Physical and architectural elements, and layered models of networks. Communication protocols and associated algorithms; local and wide area networks; network security. Four hours lecture.
+
+
+Prerequisite: CS 245 with a minimum grade of C and (CS 220 with a minimum grade of C or CS 221 with a minimum grade of C)
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 345 - Prog Language Paradigms
+Unit(s): 4
+
+Syntax, semantics, concepts, capabilities, and implementation details of several different programming languages, including imperative, functional, object oriented, and logical languages. Comparative advantages and disadvantages of different languages and paradigms. Four hours lecture. Offered every Fall.
+
+
+Prerequisite: CS 112 with a minimum grade of C and CS 245 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 411 - Automata Theory
+Unit(s): 4
+
+Finite state automata with bounded and unbounded memory. Regular languages and expressions. Context-free languages and grammars. Push-down automata and Turing machines. Undecidable languages. P versus NP problems and NP-completeness. Four hours lecture. Offered every Fall.
+
+
+Prerequisite: MATH 201 with a minimum grade of C and MATH 202 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 414 - Compilers
+Unit(s): 4
+
+Lexical analysis, parsing, semantic analysis, and code generation. Optimization techniques. Compiler design tools and compiler compilers. Four hours lecture. Offered every Spring.
+
+
+Prerequisite: CS 245 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 333 - Intro to Database Systems
+Unit(s): 4
+
+Data modeling, record storage, and file organization; database theory; relational, hierarchical, and network models; database management systems and query languages, programming language interfaces to databases; web-based client-server development. Four hours lecture.
+
+
+Prerequisite: CS 112 with a minimum grade of C and CS 245 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+
+Visit USFCA Website
+Apply
+ 
+Visit
+ 
+Athletics
+ 
+Alumni
+ 
+Giving
+ 
+Select a Catalog
+2024-2025 Catalog
+ 		 
+Add to My Favorites (opens a new window)
+Print (opens a new window)
+Help (opens a new window)
+Add to Portfolio (opens a new window)
+CS 336 - Computer Networks
+Unit(s): 4
+
+Current methods and practices in the use of computer networks to enable communication. Physical and architectural elements, and layered models of networks. Communication protocols and associated algorithms; local and wide area networks; network security. Four hours lecture.
+
+
+Prerequisite: CS 245 with a minimum grade of C and (CS 220 with a minimum grade of C or CS 221 with a minimum grade of C)
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 360 - Data Visualization
+Unit(s): 4
+
+Introduces students to the field of data visualization. Covers basic design and evaluation principles, how to acquire, parse, and analyze large datasets, and standard visualization techniques for different types of data. Utilizes the Processing programming language and environment for rapid visualization prototyping.
+
+
+Prerequisite: CS 212 with a minimum grade of C or CS 245 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 384 - Research Seminar in CS
+Unit(s): 1
+
+In this course, students will explore an area of research in Computer Science by reading academic papers; independently learning tools and technologies related to the area; presenting research findings; leading tutorials on relevant tools; and participating in group discussion.
+
+
+Prerequisite: CS 112 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+
+CS 385 - Special Lecture Series in CS
+Unit(s): 1
+
+Weekly colloquium and discussion session on current developments in various aspects of computer science. Students may register for this course in more than one semester. Majors must take this course at least twice. One hour lecture. Offered Fall and Spring.
+
+
+Prerequisite: CS 112 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 386 - Sp Topics in Computer Sci
+Unit(s): 1 to 4
+
+Topics not covered by other CS curricular offerings. Students may register for this class in more than one semester. Consent of instructor required. Offered intermittently.
+
+
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 419 - Computer Graphics
+Unit(s): 4
+
+Theory and production of interactive computer graphics. Topics chosen from graphics programming and algorithms, modeling, rendering, ray-tracing, and animation. Four hours lecture.
+
+
+Prerequisite: CS 245 with a minimum grade of C and MATH 202 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 420 - Game Engineering
+Unit(s): 4
+
+Study of the design and implementation of 3D Computer Games. Topics include 3D Modeling and Texturing, 3D Math (including rotational and translational matrices and quaternions), collision detection, physics engines, and 3D Graphics engines.
+
+
+Prerequisite: CS 245 with a minimum grade of C and CS 212 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 451 - Data Mining
+Unit(s): 4
+
+Overview of techniques for gathering, exploring, transforming, modeling, and summarizing data sets including very large data sets, both structured and unstructured. Modeling approaches include techniques from supervised and unsupervised machine learning. Discussion of data cleaning and data preparation issues, including noise, missing and unbalanced data, discrete versus continuous features, and feature selection. Some techniques are implemented from scratch, while in other cases real-world tools such as R, Weka, or Python packages are applied to large-scale data sets.
+
+
+Prerequisite: (MATH 230 with a minimum grade of C or MATH 202 with a minimum grade of C) and (CS 245 with a minimum grade of C)
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 462 - Intro to AI
+Unit(s): 4
+
+This course provides students with an introduction to the foundational ideas and approaches to artificial intelligence, including search, knowledge representation and learning, along with contextual knowledge about ethics and social impact.
+
+
+Prerequisite: CS 245 with a minimum grade of C
+College of Arts and Sciences
+
+CS 463 - Machine Learning
+Unit(s): 4
+
+A broad introduction to machine learning and pattern recognition. Topics include regression, classification, clustering and dimensionality reduction. Students complete a large project or application with a machine learning component.
+
+
+Prerequisite: CS 245 with a minimum grade of C
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1) Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 486 - Special Topics in Computer Sci
+Unit(s): 1 to 4
+
+Topics not covered by other CS curricular offerings. Students may register for this class in more than one semester. Consent of instructor required. Offered intermittently.
+
+
+Restriction: Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+CS 490 - Senior Team Project
+Unit(s): 4
+
+Prerequisite: CS 212 (grade of C or better) and senior standing. Students working in teams investigate, specify, design, implement, test, document, and present to their classmates a significant software project. Sound software engineering practices are presented in lectures and used to evaluate each stage of the project. Written and verbal communication is emphasized through frequent documentation submissions, informal group discussions, code walk-throughs, and student presentations. With the instructor’s permission, the course may be repeated for credit. Four hours lecture. Offered Fall and Spring.
+
+
+Prerequisite: CS 212 with a minimum grade of C or CS 272 with a minimum grade of C
+Restriction: Class restricted to Senior; Field of Study restricted to Computer Science, Computer Science (4+1), Data Science Major, Computer Science Minor
+College of Arts and Sciences
+
+MATH 109 - Calculus & Analytic Geom I
+Unit(s): 4
+
+Differentiation of algebraic, exponential, logarithmic, trigonometric, and inverse trigonometric functions; implicit differentiation; curve sketching; indeterminate forms; velocity and acceleration; optimization; other applications of differentiation; Fundamental Theorem of Calculus, with applications to area and volume. Four hours lecture. Offered every semester.
+
+
+Prerequisite: Placement-Calculus Readiness with a minimum score of 15 and (Placement-Mathematics with a minimum score of 22 or SAT Mathematics with a minimum score of 580 or ACT Math with a minimum score of 25 or S16 MATH SECTION SCORE with a minimum score of 600) or MATH 108 with a minimum grade of C-
+College of Arts and Sciences
+
+MATH 201 - Discrete Mathematics
+Unit(s): 4
+
+Topics include algebraic structures, graph theory, combinatorics, and symbolic logic. Offered every Fall.
+
+
+Prerequisite: MATH 109 and (CS 110 or concurrent CS 112 or concurrent CS 186 or CS 111)
+College of Arts and Sciences
+
+MATH 202 - Linear Algebra & Probability
+Unit(s): 4
+
+Matrix arithmetic and matrix algebra (determinants, adding and multiplying matrices, matrix inverse, using matrices to solve systems of equations), geometric applications of linear algebra (matrices as transformations, vectors in 2- and 3-dimensions, equations of planes, etc.); discrete probability, random variables, discrete and continuous probability distributions (including binomial and normal), expected value and variance. Offered every Spring.
+
+
+Prerequisite: MATH 201 with a minimum grade of C
+College of Arts and Sciences
+
+BIOL 103 - Human Biology
+Unit(s): 4
+
+Survey of the major organ systems of the human body for non-Biology majors. Concepts in human health and disease are covered.
+
+
+Corequisite: BIOL-103L
+Restriction: Field of study restrictions exclude Biology Major
+College of Arts and Sciences
+
+BIOL 105 - Gen Biology - Molec of Life
+Unit(s): 4
+
+Introduction to the principles of biology with emphasis on molecular biology, cell physiology, genetics, evolution, and ecology for science majors and pre-health students.
+
+
+Corequisite: BIOL-105L
+College of Arts and Sciences
+
+BIOL 106 - Gen Biology - Diversity of Life
+Unit(s): 4
+
+Introduction to the principles of biology with emphasis on biological diversity, phylogenetics, organismal biology, and physiology for science majors and pre-health students.
+
+
+Corequisite: BIOL-106L
+College of Arts and Sciences
+
+CHEM 106 - Chemistry in the Community
+Unit(s): 4
+
+This is an introductory chemistry course for non-science majors with a focus on green chemistry. The course is designed to teach students the principles of green chemistry and the importance of sustainability. We will consider issues that reflect today’s headlines such as ozone depletion, global warming, new energy sources, nutrition, genetic engineering and other topics that are connected to chemistry. The course will prepare students to respond in a thoughtful manner to these socially important issues and help them to become well-informed citizens. This lecture/lab course fulfills the CORE B2 science requirement for non-science majors.
+
+
+Corequisite: CHEM-106L
+College of Arts and Sciences
+
+
+CHEM 110 - Molecular Gastronomy
+Unit(s): 4
+
+The lecture/lab course Molecular Gastronomy fulfills the Core B2 Science requirement for non-science majors. This course will focus on the science of food and drink, including pasta, coffee and ice cream. What happens on the molecular level when eggs are whipped? And why does popcorn pop? Such questions will form the basis for the science you will learn in lecture and underlie our approach to the laboratory component of the course where we will cook, scientifically examine (and eat) food. This course is for SII students only.
+
+
+Corequisite: CHEM-110L
+College of Arts and Sciences
+
+CHEM 111 - General Chemistry I
+Unit(s): 3
+
+The first in a two-semester course sequence, this course introduces the fundamental principles of modern chemistry, including atomic and molecular structure, periodicity of the elements, stoichiometry, properties of gases and of solutions. All students desiring CHEM 111 must review tutorials and take the USF Chemistry Diagnostic Test on the USF Placement Test page (https://myusf.usfca.edu/webtrack/placement-tests).
+
+
+Prerequisite: Placement-Chemistry with a minimum score of 38
+Corequisite: CHEM-112
+College of Arts and Sciences
+
+CHEM 113 - General Chemistry II
+Unit(s): 3
+
+The second in a two-semester course sequence, this course covers the principles of modern chemistry with an emphasis on quantitative problem solving. Topics include energy, equilibrium, kinetics, acids, bases and buffers, thermochemistry, redox chemistry and coordination compounds. Offered every Spring and Summer.
+
+
+Prerequisite: CHEM 111 with a minimum grade of C and CHEM 112 with a minimum grade of C
+Corequisite: CHEM-114
+College of Arts and Sciences
+
+ENVS 100 - Understand our Environ w/Lab
+Unit(s): 4
+
+This course is an introduction to environmental science and environmental studies for non-science majors. It examines the environmental impact of population growth on natural resources; mineral and resource extraction; water resource use and water pollution; air pollution and climate change; and conventional and sustainable energy supplies. Emphasis is placed on a holistic approach to environmental science using class discussions, laboratory exercises, and environmental surveys to reinforce scientific principles. Offered every semester.
+
+
+Corequisite: ENVS-100L
+Restriction: Field of study restrictions exclude Environmental Science, Environmental Studies Major
+College of Arts and Sciences
+
+CHEM 113 - General Chemistry II
+Unit(s): 3
+
+The second in a two-semester course sequence, this course covers the principles of modern chemistry with an emphasis on quantitative problem solving. Topics include energy, equilibrium, kinetics, acids, bases and buffers, thermochemistry, redox chemistry and coordination compounds. Offered every Spring and Summer.
+
+
+Prerequisite: CHEM 111 with a minimum grade of C and CHEM 112 with a minimum grade of C
+Corequisite: CHEM-114
+College of Arts and Sciences
+
+ENVS 100 - Understand our Environ w/Lab
+Unit(s): 4
+
+This course is an introduction to environmental science and environmental studies for non-science majors. It examines the environmental impact of population growth on natural resources; mineral and resource extraction; water resource use and water pollution; air pollution and climate change; and conventional and sustainable energy supplies. Emphasis is placed on a holistic approach to environmental science using class discussions, laboratory exercises, and environmental surveys to reinforce scientific principles. Offered every semester.
+
+
+Corequisite: ENVS-100L
+Restriction: Field of study restrictions exclude Environmental Science, Environmental Studies Major
+College of Arts and Sciences
+
+
+CHEM 113 - General Chemistry II
+Unit(s): 3
+
+The second in a two-semester course sequence, this course covers the principles of modern chemistry with an emphasis on quantitative problem solving. Topics include energy, equilibrium, kinetics, acids, bases and buffers, thermochemistry, redox chemistry and coordination compounds. Offered every Spring and Summer.
+
+
+Prerequisite: CHEM 111 with a minimum grade of C and CHEM 112 with a minimum grade of C
+Corequisite: CHEM-114
+College of Arts and Sciences
+
+ENVS 100 - Understand our Environ w/Lab
+Unit(s): 4
+
+This course is an introduction to environmental science and environmental studies for non-science majors. It examines the environmental impact of population growth on natural resources; mineral and resource extraction; water resource use and water pollution; air pollution and climate change; and conventional and sustainable energy supplies. Emphasis is placed on a holistic approach to environmental science using class discussions, laboratory exercises, and environmental surveys to reinforce scientific principles. Offered every semester.
+
+
+Corequisite: ENVS-100L
+Restriction: Field of study restrictions exclude Environmental Science, Environmental Studies Major
+College of Arts and Sciences
+
+ENVS 110 - Intro to Envir. Science w/Lab
+Unit(s): 4
+
+This course serves as an introduction to and covers broad aspects of environmental science and environmental studies. For all cases, the resulting environmental impacts are studied in detail. Specifically, this course examines the risks associated with growth in a developing world; environmental impact of population growth on natural resources; mineral and resource extraction; water resource uses; and renewable and non-renewable sources for power generation. Emphasis is placed on a holistic approach to environmental science using laboratory exercises, environmental surveys, and class discussions to reinforce scientific principles.
+
+
+Corequisite: ENVS-110L
+Restriction: Field of Study restricted to Environmental Science, Environmental Studies Major, Environmental Science, Environmental Studies Minor
+College of Arts and Sciences
+
+PHYS 100 - Introductory Physics I
+Unit(s): 4
+
+First course of the two-semester introductory sequence of algebra-based physics. Main topics include mechanics of particles and systems of particles, properties of matter, fluids, heat, waves, and sound. Primarily for students majoring in the life sciences. Concurrent lab enrollment required.
+
+
+Corequisite: PHYS-100L
+Restriction: College restrictions exclude School of Management
+College of Arts and Sciences
+
+PHYS 101 - Introductory Physics II
+Unit(s): 4
+
+Second course of the two-semester introductory sequence of algebra-based physics. Main topics include electricity and magnetism, light, and an overview of modern atomic and subatomic physics. Primarily for students majoring in the life sciences. Concurrent lab enrollment required.
+
+
+Prerequisite: PHYS 100 with a minimum grade of C
+Corequisite: PHYS-101L
+Restriction: College restrictions exclude School of Management
+College of Arts and Sciences
+
+PHYS 110 - General Physics I
+Unit(s): 4
+
+First course of the two-semester introductory sequence of calculus-based physics. Main topics include Newtonian mechanics of particles and systems of particles, rigid bodies, gravitation, oscillations, and waves. Primarily for students majoring in the physical sciences and mathematics. Concurrent lab enrollment required. • Corequisite: MATH 109
+
+
+Prerequisite: concurrent MATH 109 with a minimum grade of C
+Corequisite: PHYS-110L
+College of Arts and Sciences
+
+PHYS 210 - General Physics II
+Unit(s): 4
+
+Second course of the two-semester introductory sequence of calculus-based physics. Main topics include electromagnetism (electric fields, electric currents, circuits, magnetic fields, Maxwell’s equations, and electromagnetic waves) and thermodynamics (heat and the laws of thermodynamics). Primarily for students majoring in the physical sciences and mathematics. Concurrent lab enrollment required. 
+
+
+
+Prerequisite: MATH 109 with a minimum grade of C and PHYS 110 with a minimum grade of C and concurrent MATH 110 with a minimum grade of C
+Corequisite: PHYS-210L
+College of Arts and Sciences
