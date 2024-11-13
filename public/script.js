@@ -40,6 +40,7 @@ async function loadConversationHistory() {
 window.onload = loadConversationHistory;
 
 
+
 // Add a sendMessage() function to handle sending messages
 async function sendMessage() {
     // Retrieve the user input from the input field and remove whitespace
@@ -162,29 +163,83 @@ async function loadConversationHistory() {
 window.onload = loadConversationHistory;
 
 
-// Function that adds AI and user message inputs inside the HTML
 function addMessage(text, sender = 'user') {
     const chatbox = document.getElementById("messages");
     const chat = document.createElement("div");
     chat.classList.add("chat");
 
+    // Replace newlines with <br><br> for line breaks (inline text)
+    let formattedText = text.replace(/\n/g, '<br><br>');
+
+    // Format ordered lists (e.g., 1. Item 1, 2. Item 2)
+    formattedText = formattedText.replace(/(\d+\.)\s+/g, '<li>').replace(/<\/li><li>/g, '</li><li>').replace(/<\/li>/g, '</li>');
+    formattedText = formattedText.replace(/(\d+\.)\s+/g, '<ol><li>'); // Open the ordered list
+
+    // Format unordered lists (e.g., - Item, * Item, • Item)
+    formattedText = formattedText.replace(/(^|\n)([-*•])\s+/g, (match, p1, p2) => {
+        if (p1 === '\n') return '<li>'; // Start a new unordered list
+        return `<li>`; // Add an unordered list item
+    });
+    formattedText = formattedText.replace(/<\/li><li>/g, '</li><li>'); // Ensure list items are properly enclosed
+    formattedText = formattedText.replace(/<\/li>/g, '</li>'); // Close the list properly
+    formattedText = formattedText.replace(/(\d+\.)\s+/g, '<ol><li>'); // Close the ordered list tag properly
+
+    // Detect if there are multiple lines by splitting the formatted text at the first line break
+    const lines = formattedText.split('<br><br>');
+    const firstLine = lines[0]; // The first line of text
+
+    // Create a styled version of the first line (bold and bigger font size) only for AI's response with multiple lines
+    let finalText = formattedText;
+    if (sender === 'ai') {
+        // Check if there are multiple lines (more than 1)
+        if (lines.length > 1) {
+            const styledFirstLine = `<span style="font-size: 1.3em; font-weight: bold;">${firstLine}</span>`;
+            const remainingText = lines.slice(1).join('<br><br>'); // Join the remaining lines after the first line
+            finalText = styledFirstLine + (remainingText ? '<br><br>' + remainingText : '');
+        }
+    }
+
+    // Now format the message, separating text from lists
+    const listMatches = text.match(/(^|\n)([-*•]|\d+\.)\s+/); // Detect if there are lists at all
+    const isList = listMatches !== null;
+
     if (sender === 'ai') {
         chat.classList.add("ai-message");
-        chat.innerHTML = `
-            <img src="https://cdn.glitch.global/75bcfb9b-05b5-4a7c-a5be-e94c063e143f/avatar.jpg?v=1727042473922" alt="">
-            <p class="msg">${text}</p>
-        `;
+        if (isList) {
+            // Wrap lists outside of <p> tags
+            chat.innerHTML = `
+                <img src="images/ai-avatar.jpg" alt="">
+                <div class="msg">${finalText}</div>
+            `;
+        } else {
+            chat.innerHTML = `
+                <img src="images/ai-avatar.jpg" alt=""/>
+                <p class="msg">${finalText}</p>
+            `;
+        }
     } else {
         chat.classList.add("user-message");
-        chat.innerHTML = `
-            <img src="https://cdn.glitch.global/75bcfb9b-05b5-4a7c-a5be-e94c063e143f/empty%20avatar%20copy.jpg?v=1727042620275" alt="">
-            <p class="msg">${text}</p>
-        `;
+        if (isList) {
+            // Wrap lists outside of <p> tags for user messages
+            chat.innerHTML = `
+                <img src="images/user-avatar.jpg" alt=""/>
+                <div class="msg">${finalText}</div>
+            `;
+        } else {
+            chat.innerHTML = `
+                <img src="images/user-avatar.jpg" alt=""/>
+                <p class="msg">${finalText}</p>
+            `;
+        }
     }
 
     chatbox.appendChild(chat);
-    chatbox.scrollTop = chatbox.scrollHeight; 
+    chatbox.scrollTop = chatbox.scrollHeight;
 }
+
+
+
+
 
 // Log event function
 function logEvent(type, element, message) {
