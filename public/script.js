@@ -54,9 +54,6 @@ async function sendMessage() {
 
     // Add user message to the chat
     addMessage(userInput, 'user');
-	
-	    const loadingIndicator = document.getElementById('loading-indicator');
-    loadingIndicator.style.display = 'block';
 
     // Prepare payload for the server
     const payload = conversationHistory.length === 0
