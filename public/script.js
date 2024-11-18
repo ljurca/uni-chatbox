@@ -54,6 +54,9 @@ async function sendMessage() {
 
     // Add user message to the chat
     addMessage(userInput, 'user');
+	
+	    const loadingIndicator = document.getElementById('loading-indicator');
+    loadingIndicator.style.display = 'block';
 
     // Prepare payload for the server
     const payload = conversationHistory.length === 0
@@ -76,24 +79,24 @@ async function sendMessage() {
         // Display the server's response in the chat window
         addMessage(`${data.confirmation}`, 'ai');
 
-        // Send a request to the server for Bing search results
+/*         // Send a request to the server for Bing search results
         const bingResponse = await fetch("/bing-search", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ query: userInput }),
-        });
+        }); */
 		
-		addMessage("Here are search results from the internet that can help you further:", 'ai');
+/* 		addMessage("Here are search results from the internet that can help you further:", 'ai'); */
 
-        const bingData = await bingResponse.json();
+/*         const bingData = await bingResponse.json();
 		bingData.results.forEach(result => {
             const faviconUrl = `https://www.google.com/s2/favicons?domain=${new URL(result.url).hostname}`;
             addMessage(`
                 <img src="${faviconUrl}" alt="favicon" style="width: 16px; height: 16px; margin-right: 5px;">
                 <a href="${result.url}" target="_blank" style="text-decoration: none; color: blue;">${result.name}</a>: <br><br>${result.snippet}`, 'ai');
-        });
+        }); */
 
         conversationHistory.push({ role: 'user', content: userInput });
     } catch (error) {
