@@ -1,20 +1,33 @@
 // 1. Import Express and other necessary modules
 const express = require("express");
-const path = require("path");
 const bodyParser = require('body-parser');
 const env_var = require('dotenv').config();
 const { OpenAI } = require('openai');
 const mongoose = require('mongoose');
 const axios = require('axios'); // Import axios here
+const fs = require('fs');
+const path = require('path');
+
+// OpenAI initialization
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const ChunkEmbedding = require('./models/ChunkEmbedding');  // Import the ChunkEmbedding model
 
 
+// In-memory store for chunk embeddings
+let chunkEmbeddingsStore = [];  // This will hold the chunk embeddings for testing purposes
+
+// define the test file path
+const filePath = path.join(__dirname, 'data', 'test_file.txt');
+
+
+// MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log('Connected to MongoDB successfully');
-  })
-  .catch(err => {
-    console.error('MongoDB connection error:', err);
-  });
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
+  
 
 // Import models
 const Interaction = require('./models/Interaction');
@@ -32,10 +45,7 @@ app.use(express.static(path.join(__dirname, "public"))); // Serve static files f
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// OpenAI initialization
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+
 
 // Route to serve the homepage
 app.get("/", (req, res) => {
@@ -61,42 +71,44 @@ timestamp: 1 });
  }
 });
 
-// 4. Set up a POST route for handling user input
+
 app.post("/chat", async (req, res) => {
-  const { history = [], input: userInput, participantID } = req.body;
+  // Extract user input and participant ID from the request body
+  const { input: userInput, participantID } = req.body;
 
-// Check for participantID 
-   if (!participantID) {
- return res.status(400).send('Participant ID is required');
- }
-
- // 3. Log the interaction (user input and chatbot response)
- // Add participantID
+  // Check if participant ID exists in the request body
+  if (!participantID) {
+    // If no participant ID, return an error response
+    return res.status(400).send('Participant ID is required');
+  }
 
   
-  const messages = history.length === 0
-    ? [{ role: 'system', content: 'You are a helpful assistant working for USFCA.' }, 
-       { role: 'user', content: userInput }]
-    : [{ role: 'system', content: 'You are a helpful assistant working for USFCA.' }, 
-       ...history, { role: 'user', content: userInput }];
+    const maxTokens = 4096; // Maximum token limit for GPT-4 (adjust if necessary)
+    
 
   try {
+    // Call OpenAI's chat API to generate a response based on the user input
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: messages,
-      max_tokens: 100,
+      model: "gpt-4", // Use the GPT-4 model with the largest token limit
+      messages: [{ role: 'user', content: userInput }], // Correct format: pass prompt as content in a message object
+    });
+    
+    // Extract the content of the bot's response from the API's response
+    const apiMessage = response.choices[0].message.content;
+    
+    // 3. Save the interaction to the database (user input, bot response, participant ID, and embedding)
+    const interaction = new Interaction({ 
+      userInput, 
+      botResponse: apiMessage, // Correctly reference apiMessage
+      participantID 
     });
 
-    const apiMessage = response.choices[0].message.content;
-
-const interaction = new Interaction({ 
-    userInput, 
-    botResponse: apiMessage, // Correctly reference apiMessage
-    participantID 
-});
-await interaction.save();
-
+    // Save the interaction to the MongoDB database
+    await interaction.save();
+    console.log('User input: ' + userInput);
     console.log(`Response: ${apiMessage}`);
+
+    // Send the response only once after processing is complete
     res.json({ confirmation: apiMessage });
   } catch (error) {
     console.error('Error in OpenAI API call:', error);
@@ -104,30 +116,28 @@ await interaction.save();
   }
 });
 
-// Add this route to handle Bing search requests
-app.post("/bing-search", async (req, res) => {
-    const { query } = req.body;
 
-    try {
-        const bingResponse = await axios.get('https://api.bing.microsoft.com/v7.0/search', {
-            params: { q: query },
-            headers: {
-                'Ocp-Apim-Subscription-Key': process.env.BING_API_KEY
-            }
-        });
 
-        const searchResults = bingResponse.data.webPages.value.slice(0, 3).map(result => ({
-            name: result.name,
-            snippet: result.snippet,
-            url: result.url
-        }));
+// 3. Create a helper function to generate an embedding for a given text
+async function generateEmbedding(text) {
+  try {
+    // Call OpenAI's embeddings API to generate the vector for the input text
+    const embeddingResponse = await openai.embeddings.create({
+      model: 'text-embedding-ada-002',  // The model used for generating embeddings
+      input: text,  // The text for which we want the embedding
+    });
 
-        res.json({ results: searchResults });
-    } catch (error) {
-        console.error('Error in Bing API call:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
+    // Extract the embedding vector from the response
+    const embedding = embeddingResponse.data[0].embedding;
+
+    // Return the generated embedding (vector representation of the input text)
+    return embedding;
+  } catch (error) {
+    // If an error occurs during the embedding generation, log it and throw an error
+    console.error('Error generating embedding:', error);
+    throw new Error('Failed to generate embedding');
+  }
+}
 
 
 // Log event route
@@ -150,8 +160,8 @@ app.post('/log-event', async (req, res) => {
     }
 });
 
-// 5. Listen on the port specified by Render
-const PORT = process.env.PORT || 3000; // Fallback to 3000 if PORT is not set
+// 5. Listen on a port (3000)
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
