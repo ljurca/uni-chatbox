@@ -13,6 +13,9 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+const ChunkEmbedding = require('./models/ChunkEmbedding');  // Import the ChunkEmbedding model
+
+
 // In-memory store for chunk embeddings
 let chunkEmbeddingsStore = [];  // This will hold the chunk embeddings for testing purposes
 
@@ -20,7 +23,7 @@ let chunkEmbeddingsStore = [];  // This will hold the chunk embeddings for testi
 const filePath = path.join(__dirname, 'data', 'test_file.txt');
 
 
-// Function to chunk the text into manageable pieces with overlap, considering paragraphs
+/* // Function to chunk the text into manageable pieces with overlap, considering paragraphs
 function chunkTextWithOverlap(text, chunkSize = 500, overlap = 100) {
   const chunks = [];
   let start = 0;
@@ -38,15 +41,15 @@ function chunkTextWithOverlap(text, chunkSize = 500, overlap = 100) {
   
   // Loop through the paragraphs and build chunks
   for (let i = 0; i < paragraphs.length; i++) {
-    const paragraph = paragraphs[i];
+    const paragraph = paragraphs[i].trim(); // Trim each paragraph to remove leading/trailing spaces
 
     // Check if adding the next paragraph exceeds the chunk size
-    if (currentChunk.length + paragraph.length + 2 <= chunkSize) {
-      currentChunk += paragraph + '\n\n'; // Add paragraph to the current chunk
+    if (currentChunk.length + paragraph.length + 1 <= chunkSize) {
+      currentChunk += paragraph + ' '; // Add paragraph to the current chunk, using space instead of newlines
     } else {
       // Push the current chunk if it's full
       chunks.push(currentChunk.trim());
-      
+
       // If there's overlap, add part of the next paragraph
       if (i < paragraphs.length - 1) {
         const overlapParagraph = paragraphs[i + 1].slice(0, overlap); // Take a portion for overlap
@@ -54,7 +57,7 @@ function chunkTextWithOverlap(text, chunkSize = 500, overlap = 100) {
       }
 
       // Start a new chunk with the current paragraph
-      currentChunk = paragraph + '\n';
+      currentChunk = paragraph + ' ';  // Start with the current paragraph
     }
   }
 
@@ -63,7 +66,7 @@ function chunkTextWithOverlap(text, chunkSize = 500, overlap = 100) {
     chunks.push(currentChunk.trim());
   }
 
-  // Print the chunks for debugging
+  // Print the chunks for debugging (optional)
   chunks.forEach((chunk, index) => {
     console.log(`Chunk ${index + 1}:`);
     console.log(chunk);
@@ -74,6 +77,8 @@ function chunkTextWithOverlap(text, chunkSize = 500, overlap = 100) {
 }
 
 
+
+
 // Function to get embeddings for each chunk from OpenAI
 async function getEmbeddingsForChunks(chunks) {
   const embeddings = [];
@@ -82,26 +87,23 @@ async function getEmbeddingsForChunks(chunks) {
     try {
       // Call OpenAI's embeddings API
       const response = await openai.embeddings.create({
-        model: 'text-embedding-ada-002', // You can adjust the model if needed
+        model: 'text-embedding-ada-002',
         input: chunk,
       });
 
-      // Log the response to see the structure
-      console.log(`Response for Chunk ${index + 1}:`, response);
-
-      // Extract the embedding vector from the response (response.data might need to be logged to ensure proper structure)
       const embedding = response.data[0].embedding;
-	  
-	  // Store the chunk and its embedding in the in-memory store
-      chunkEmbeddingsStore.push({
-        chunkText: chunk,
+
+      // Store the chunk and its embedding in MongoDB
+      const newChunkEmbedding = new ChunkEmbedding({
+        chunkText: chunk,  // Ensure this is the full chunk of text
         embedding: embedding,
       });
 
-      // Store the chunk along with its embedding vector
+      await newChunkEmbedding.save(); // Save the chunk embedding to MongoDB
+
       embeddings.push({ chunk: chunk, embedding: embedding });
 
-      console.log(`Chunk ${index + 1} embedding generated.`);
+      console.log(`Chunk ${index + 1} embedding generated and saved to MongoDB.`);
     } catch (error) {
       console.error(`Error generating embedding for chunk ${index + 1}:`, error);
     }
@@ -109,6 +111,8 @@ async function getEmbeddingsForChunks(chunks) {
 
   return embeddings;
 }
+
+
 
 
 // Read the file asynchronously
@@ -121,14 +125,14 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   // Step 1: Chunk the text into smaller pieces with overlap (e.g., 500 characters per chunk and 100 characters overlap)
   const chunks = chunkTextWithOverlap(data, 500, 100);
   
-    // Step 3: Print each chunk
+  // Step 2: Print each chunk (optional debugging)
   for (const [index, chunk] of chunks.entries()) {
     console.log(`Chunk ${index + 1}:`);
     console.log(chunk);
     console.log('----------------------');
   }
   
-  // Step 2: Process embeddings asynchronously
+  // Step 3: Process embeddings asynchronously
   async function generateEmbeddings() {
     try {
       const embeddings = await getEmbeddingsForChunks(chunks);  // Await the embedding generation
@@ -146,7 +150,8 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   }
   
   generateEmbeddings();
-});
+}); */
+
 
 
 
@@ -235,10 +240,25 @@ app.post("/chat", async (req, res) => {
   
   let prompt = '';  // Declare prompt here, outside of try-catch block
   try {
+    // Fetch stored chunk embeddings from MongoDB
+    const chunkEmbeddings = await ChunkEmbedding.find();
+	
+    if (chunkEmbeddings.length === 0) {
+      console.log('No chunk embeddings found in the database.');
+      return res.status(404).send('No relevant data found.');
+    }
+
+    // Store chunk embeddings in memory (initialize outside try-catch)
+    chunkEmbeddingsStore = chunkEmbeddings.map(chunk => ({
+      chunkText: chunk.chunkText,  // Chunk text (full text stored in MongoDB)
+      embedding: chunk.embedding    // The corresponding embedding
+    }));
+
+    console.log('Stored chunk embeddings in memory:', chunkEmbeddingsStore);
+
     // 2. Generate the embedding for the user query using the generateEmbedding function
     const userEmbedding = await generateEmbedding(userInput);  // Await embedding generation
     console.log('User embedding generated:', userEmbedding);
-    console.log('Stored chunk embeddings in memory:', chunkEmbeddingsStore);
 
     // Calculate cosine similarity for each chunk embedding and store the results
     const similarities = chunkEmbeddingsStore.map(chunk => {
@@ -285,7 +305,7 @@ app.post("/chat", async (req, res) => {
   try {
     // Call OpenAI's chat API to generate a response based on the user input
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini", // Specify the model to use
+      model: "gpt-4", // Use the GPT-4 model with the largest token limit
       messages: [{ role: 'user', content: prompt }], // Correct format: pass prompt as content in a message object
     });
     
@@ -311,6 +331,7 @@ app.post("/chat", async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 
 // 3. Create a helper function to generate an embedding for a given text
@@ -367,7 +388,7 @@ function cosineSimilarity(vecA, vecB) {
 
 
 
-// Add this route to handle Bing search requests
+/* // Add this route to handle Bing search requests
 app.post("/bing-search", async (req, res) => {
     const { query } = req.body; // Extract only the user query from the request body
 
@@ -395,7 +416,7 @@ app.post("/bing-search", async (req, res) => {
         console.error('Error in Bing API call:', error);
         res.status(500).send('Internal Server Error');
     }
-});
+}); */
 
 
 
