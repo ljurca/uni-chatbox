@@ -13,9 +13,6 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const ChunkEmbedding = require('./models/ChunkEmbedding');  // Import the ChunkEmbedding model
-
-
 // In-memory store for chunk embeddings
 let chunkEmbeddingsStore = [];  // This will hold the chunk embeddings for testing purposes
 
