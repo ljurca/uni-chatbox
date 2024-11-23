@@ -7,43 +7,95 @@
   transition: ease 0.5s;
 }
 
+.home_text {
+	text-align: center;
+	margin: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00543c;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0a2c22;
+}
+
 body {
-  background: lightgrey; /* Light grey background */
-  color: white; /* Black text */
+  background-image: url('images/background_front.jpg');
+  color: white; 
 }
 
 .header {
-  background: #00543c; /* Changed to #00543c */
+  background: #00543c;
   display: flex;
   padding: 15px;
   border-radius: 10px 10px 0 0;
-  font-weight: 500; /* Medium weight for header */
-  border: 1px solid #00543c; /* Changed to #00543c */
+  font-weight: 500; 
+  border: 1px solid #00543c; 
 }
 
 #chat-container {
   width: 100%;
   max-width: 95%;
-  height: 95vh; /* Set height to 95% of the viewport height */
-  background: transparent; /* No background */
+  height: 95vh; 
+  background: transparent; 
   margin: 0 auto;
   margin-top: 50px;
   border-radius: 10px;
   position: relative;
-  border: 1px solid #00543c; /* Changed to #00543c */
+  border: 1px solid #00543c; 
   display: flex;
-  flex-direction: column; /* Align children vertically */
+  flex-direction: column; 
 }
+
+.chat-container-home {
+  width: 100%;
+  max-width: 95%;
+  height: 95vh; 
+  background: transparent; 
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 10px;
+  position: relative;
+  border: 1px solid #00543c; 
+  display: flex;
+  flex-direction: column; 
+  background-image: url('images/gradient.png');
+}
+
+.logo_container {
+  display: flex;           
+  justify-content: center; 
+  align-items: center;     
+  height: 200px;           
+  width: 200px;            
+  margin: 0 auto;          
+}
+
+.usfca {
+  max-width: 200px;
+}
+
 
 /* Chatbox */
 #messages {
+  background-image: url('images/gradient.png');
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  flex: 1; /* Allow #messages to grow and fill available space */
+  flex: 1; 
   overflow-y: auto;
-  border-bottom: 1px solid #00543c; /* Changed to #00543c */
+  border-bottom: 1px solid #00543c; 
 }
 
 #messages::-webkit-scrollbar {
@@ -51,11 +103,11 @@ body {
 }
 
 #messages::-webkit-scrollbar-thumb {
-  background-color: #00543c; /* Changed to #00543c */
+  background-color: #00543c; 
 }
 
 #messages::-webkit-scrollbar-thumb:hover {
-  background-color: darkgrey; /* Dark grey on hover */
+  background-color: darkgrey; 
 }
 
 .ai-message ion-icon {
@@ -78,18 +130,18 @@ body {
   height: 45px;
   border-radius: 50%;
   object-fit: cover;
-  border: solid 2px #00543c; /* Changed to #00543c */
+  border: solid 2px #00543c; 
 }
 
 .chat .msg {
-  background: lightgrey; /* Light grey background for messages */
+  background: lightgrey; 
   max-width: 80%;
   padding: 15px;
   border-radius: 10px;
   position: relative;
-  font-size: 14px; /* Slightly larger for better readability */
-  font-weight: 400; /* Regular weight for messages */
-  border: 1px solid #00543c; /* Changed to #00543c */
+  font-size: 14px; 
+  font-weight: 400; 
+  border: 1px solid #00543c; 
 }
 
 .chat.even {
@@ -102,7 +154,7 @@ body {
 
 .chat .msg ion-icon {
   font-size: 20px;
-  color: #00543c; /* Changed to #00543c */
+  color: #00543c; 
   position: absolute;
   top: 10px;
 }

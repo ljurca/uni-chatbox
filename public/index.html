@@ -7,25 +7,52 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="home-container">
-      <h1>Welcome to the AI Chatbot</h1>
-      <p>
-        Our AI Chatbot is here to assist you with any questions or information
-        you need. Click the button below to start chatting with our ChatBot!
+    <div class="chat-container-home">
+      <h1 class= "home_text">Welcome to our study!</h1>
+	  <div class="logo_container">
+	  <img src="images/usfca.svg" class="usfca"alt="">
+	  </div>
+      <p class= "home_text">
+        Thank you for participating in our CS-486-01 study!
       </p>
-	  <form id="participant-form" action="/chat.html">
-  <label for="participantID">Enter your Participant ID:</label>
+	  <form id="participant-form" action="/study.html" class= "home_text">
+  <label for="participantID">Please enter your Participant ID:</label>
   <input type="text" id="participantID" name="participantID" required>
-  <button type="submit">Start Chat</button>
+  <button type="submit" class="button">Start Chat</button>
 </form>
-
-<script>
-  document.getElementById('participant-form').addEventListener('submit', function(event) {
-    const participantID = document.getElementById('participantID').value;
-    // Save the Participant ID in localStorage
-    localStorage.setItem('participantID', participantID);  
-  });
-</script>
     </div>
+	      <script>
+        document.getElementById('participant-form').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent form from submitting
+
+          const participantID = document.getElementById('participantID').value;
+          if (!participantID) {
+            alert("Please enter your Participant ID");
+            return;
+          }
+
+          // Save the Participant ID in localStorage
+          localStorage.setItem('participantID', participantID);
+
+          // Send participantID to the server to fetch data
+          fetch(`/get-participant-data?participantID=${participantID}`)
+            .then(response => response.json())
+            .then(data => {
+              // Assuming the response contains fields like name, email, etc.
+              for (let key in data) {
+                if (data.hasOwnProperty(key)) {
+                  localStorage.setItem(key, data[key]);
+                }
+              }
+
+              // Redirect to chat or study page after saving data in localStorage
+              window.location.href = '/study.html?participantID=' + participantID;
+            })
+            .catch(error => {
+              console.error('Error fetching participant data:', error);
+              alert('Error fetching participant data. Please try again.');
+            });
+        });
+      </script>
   </body>
 </html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USFCA Course Planner</title>
+  <link rel="stylesheet" href="study_style.css">
+</head>
+<body>
+  <nav class="accordion arrows">
+    <header class="box">
+      <label for="acc-close" class="box-title"><h1>USFCA Computer Science Year-by-Year Course Planner</h1><p>Please complete these parts step by step.</p></label>
+    </header>
+    <input type="radio" name="accordion" id="cb1" />
+    <section class="box">
+      <label class="box-title" for="cb1">Demographics Questionnaire</label>
+      <label class="box-close" for="acc-close"></label>
+      <div class="box-content">
+	  <p>Thank you for participating in this study.</p>
+	  <p>Please do all the steps in order for each stage of the study.</p>
+	  <p>Please complete the Demographics survey below:</p>
+      <a href="#" target="_blank" id="demographicsLink" class="button">Demographics</a>
+    </section>
+    <input type="radio" name="accordion" id="cb2" />
+    <section class="box">
+      <label class="box-title" for="cb2">Task</label>
+      <label class="box-close" for="acc-close"></label>
+      <div class="box-content"><h2>Study objective</h2><p>Create a year-by-year academic plan for your Computer Science Undergraduate course at USFCA, This includes all the required modules you will need to complete in order to graduate and all the modules you will add need to have the proper prerequisites completed in order for it to have the correct chaining and be valid. You will firstly use the USFCA website to create an Academic plan, and next you will use an AI agent to create one.</p>
+	  <p>You will use Google Sheets to create both academic plans.</p>
+	  <p>You are free to create the sheets however you want in terms of style and layout.</p>
+	  <p>Begin by following the steps below:</p>
+          <ul>
+            <li><br>1. Open <a href="https://sheets.google.com/" target="_blank">Google Sheets</a><br></li>
+            <li><br>2. Login with USF credentials<br></li>
+            <li><br>3. Rename the first tab "USF Website"<br></li>
+            <li><br>4. Create a new tab and rename it "Agent"<br></li>
+            <li><br>5. Your tabs should look like below:<br></li>
+            <li><br><img src="images/tabs.jpg" alt=""><br></li>
+            <li><br>6. Use the USF website to plan your course year-by-year<br></li>
+            <li><br>7. Create a table containing the modules you will by semester for 4 years (for each semester).<br></li>
+			<li><br>8. Click on the USF website and begin the task: <a href="https://www.usfca.edu/" target="_blank">USF Website</a><br></li>
+          </ul></div>
+    </section>
+    <input type="radio" name="accordion" id="cb3" />
+    <section class="box">
+      <label class="box-title" for="cb3">Pre-Task Questionnaire</label>
+      <label class="box-close" for="acc-close"></label>
+      <div class="box-content"><p>Please complete the Pre-Task survey below:</p>
+      <a href="#" target="_blank" id="preTaskLink" class="button">Pre-Task Survey</a></div>
+    </section>
+    <input type="radio" name="accordion" id="cb4" />
+    <section class="box">
+      <label class="box-title" for="cb4">AI Agent Task</label>
+      <label class="box-close" for="acc-close"></label>
+      <div class="box-content"><p>Now use the AI agent to create your year-by-year academic plan.</p>
+          <p>Click on the link to use the AI agent. Write whatever prompts you want to ask the Agent how to plan your CS Course at USFCA year-by-year</p>
+		  <p><a href="#" target="_blank" class="button" id ="aiTarget">AI Agent</a></p>
+		  <p>Use the Google Sheet to create your 4 year CS course outline using the "Agent" tab</p>
+		  <img src="images/agent_tab.jpg" alt="">
+</div>
+    </section>
+    <input type="radio" name="accordion" id="cb6" />
+    <section class="box">
+      <label class="box-title" for="cb6">Share your file</label>
+      <label class="box-close" for="acc-close"></label>
+      <div class="box-content">
+            <p>Share your completed google sheet using the instructions below</p>
+              <ul>
+                <li><br>1. Click "Share" button<br></li>
+				<li><br><img src="images/share.jpg" alt=""><br></li>
+                <li><br>2. Name file "Academic Plan" and save<br></li>
+				<li><br><img src="images/share_name.jpg" alt=""><br></li>
+                <li><br>3. Set access to "Anyone with the link"<br></li>
+				<li><br><img src="images/link_share.jpg" alt=""><br></li>
+				<li><br>4. Copy the link<br></li>
+				<li><br><img src="images/copy_link.jpg" alt=""><br></li>
+				<li><br>Copy/Paste your link below and Submit<br></li>
+              </ul>
+<form id="googleSheetForm">
+  <input type="text" id="googleSheetLink" placeholder="Enter your Google Sheet link here" required />
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  // Attach an event listener to handle form submission
+  document.getElementById("googleSheetForm").addEventListener("submit", async (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    const googleSheetLink = document.getElementById("googleSheetLink").value;
+
+    if (!participantID) {
+      alert("Participant ID is missing. Please log in again.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/update-google-sheet", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ participantID, googleSheetLink }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert("Google Sheet link updated successfully!");
+      } else {
+        alert("Error: " + result.message);
+      }
+    } catch (error) {
+      console.error("Error updating Google Sheet link:", error);
+      alert("An error occurred while updating the link.");
+    }
+  });
+</script>
+<p>Please don't delete the file or restrict access until the end of course</p></div>
+    </section>
+    <input type="radio" name="accordion" id="acc-close" />
+	
+	    <input type="radio" name="accordion" id="cb7" />
+    <section class="box">
+      <label class="box-title" for="cb7">Post-Task Questionnaire</label>
+      <label class="box-close" for="acc-close"></label>
+      <div class="box-content">          <p>Please complete the Post-Task survey below:</p>
+      <a href="#" target="_blank" id="postTaskLink" class="button">Post-Task Survey</a>
+	  <p>Thank you for completing our study!</p></div>
+    </section>
+    <input type="radio" name="accordion" id="acc-close" />
+	
+  </nav>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -14,32 +14,6 @@ if (!participantID) {
  window.location.href = 'index.html'; 
 }
 
-// Function to fetch and load existing conversation history
-async function loadConversationHistory() {
- const response = await fetch('/history', {
- method: 'POST',
- headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify({ participantID }) // Send participantID to the server
- });
- const data = await response.json();
- if (data.interactions && data.interactions.length > 0) {
- data.interactions.forEach(interaction => {
- const userMessageDiv = document.createElement('div');
- userMessageDiv.textContent = `You: ${interaction.userInput}`;
- document.getElementById('messages').appendChild(userMessageDiv);
- const botMessageDiv = document.createElement('div');
- botMessageDiv.textContent = `Bot: ${interaction.botResponse}`;
- document.getElementById('messages').appendChild(botMessageDiv);
- // Add to conversation history
- conversationHistory.push({ role: 'user', content: interaction.userInput });
- conversationHistory.push({ role: 'assistant', content: interaction.botResponse });
- });
- }
-}
-// Load history when agent loads
-window.onload = loadConversationHistory;
-
-
 // Add a sendMessage() function to handle sending messages
 async function sendMessage() {
     // Retrieve the user input from the input field and remove whitespace
@@ -53,11 +27,14 @@ async function sendMessage() {
 
     // Add user message to the chat
     addMessage(userInput, 'user');
+	
+	// Get the page name dynamically
+    const pageName = window.location.pathname.split('/').pop();
 
     // Prepare payload for the server
     const payload = conversationHistory.length === 0
-        ? { input: userInput, participantID } // First submission, send input with participantID
-        : { history: conversationHistory, input: userInput, participantID }; // Send history with input and participantID
+        ? { input: userInput, participantID, page: pageName } // First submission
+        : { history: conversationHistory, input: userInput, participantID, page: pageName }
 
     // Send the message to the server
     try {
@@ -75,25 +52,6 @@ async function sendMessage() {
         // Display the server's response in the chat window
         addMessage(`${data.confirmation}`, 'ai');
 
-        // Send a request to the server for Bing search results
-        const bingResponse = await fetch("/bing-search", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ query: userInput }),
-        });
-		
-		addMessage("Here are search results from the internet that can help you further:", 'ai');
-
-        const bingData = await bingResponse.json();
-		bingData.results.forEach(result => {
-            const faviconUrl = `https://www.google.com/s2/favicons?domain=${new URL(result.url).hostname}`;
-            addMessage(`
-                <img src="${faviconUrl}" alt="favicon" style="width: 16px; height: 16px; margin-right: 5px;">
-                <a href="${result.url}" target="_blank" style="text-decoration: none; color: blue;">${result.name}</a>: <br><br>${result.snippet}`, 'ai');
-        });
-
         conversationHistory.push({ role: 'user', content: userInput });
     } catch (error) {
         console.error("Error occurred while sending message:", error);
@@ -103,16 +61,18 @@ async function sendMessage() {
     inputField.value = '';
 }
 
-// Add event listener to the sendBtn to trigger sendMessage() when clicked
-sendBtn.addEventListener('click', sendMessage);
+if (sendBtn) {
+    sendBtn.addEventListener('click', sendMessage);
+}
 
-// Add event listener to the inputField to allow the "Enter" key to send the message
-inputField.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        sendMessage();
-        event.preventDefault();
-    }
-});
+if (inputField) {
+    inputField.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+            event.preventDefault();
+        }
+    });
+}
 
 // Function to fetch and load existing conversation history
 async function loadConversationHistory() {
@@ -158,32 +118,140 @@ async function loadConversationHistory() {
     }
 }
 
-// Load history when the page loads
-window.onload = loadConversationHistory;
 
 
-// Function that adds AI and user message inputs inside the HTML
+async function updateLinks() {
+	if (
+	  !window.location.pathname.endsWith("study.html") &&
+	  !window.location.pathname.endsWith("study")
+	) {
+	  return; // Prevent execution on other pages
+	}
+
+    console.log('Updating links...'); // Check if this is being called
+
+    const demographicsLink = document.getElementById('demographicsLink');
+    const preTaskLink = document.getElementById('preTaskLink');
+    const postTaskLink = document.getElementById('postTaskLink');
+	const aiTarget = document.getElementById('aiTarget');
+
+    if (demographicsLink && preTaskLink && postTaskLink) {
+        console.log('Elements found, updating links...');
+        const demographicsURL = localStorage.getItem('demographicsLink');
+        const preTaskURL = localStorage.getItem('preTaskLink');
+        const postTaskURL = localStorage.getItem('postTaskLink');
+
+        // Log values to check if they exist in localStorage
+        console.log('demographicsURL:', demographicsURL);
+        console.log('preTaskURL:', preTaskURL);
+        console.log('postTaskURL:', postTaskURL);
+
+        demographicsLink.href = demographicsURL || "https://defaultdemographics.com/"; // Default if not in localStorage
+        preTaskLink.href = preTaskURL || "https://defaultpreTask.com/"; // Default if not in localStorage
+        postTaskLink.href = postTaskURL || "https://defaultpostTask.com/"; // Default if not in localStorage
+    } else {
+        console.error('Links not found in the DOM');
+    }
+    
+	const thirdLetter = participantID[2].toLowerCase(); // Get the 3rd letter of the participantID (case insensitive)
+            if (thirdLetter === 'l') {
+                aiTarget.href = `/chat.html?participantID=${participantID}`;
+            } else if (thirdLetter === 'f') {
+                aiTarget.href = `/ai.html?participantID=${participantID}`;
+            } else {
+                console.error('Links not found in the DOM');
+            }
+	
+}
+
+
+window.onload = async function() {
+    await loadConversationHistory();  // Load conversation history
+    await updateLinks();  // Update the links based on the participant data
+};
+
+
 function addMessage(text, sender = 'user') {
-    const chatbox = document.getElementById("messages");
+	if (
+	  !window.location.pathname.endsWith("chat.html") &&
+	  !window.location.pathname.endsWith("chat") &&
+	  !window.location.pathname.includes("ai.html") &&
+	  !window.location.pathname.includes("ai")
+	) {
+	  return; // Prevent execution on other pages
+	}
+	
+	const chatbox = document.getElementById("messages");
     const chat = document.createElement("div");
     chat.classList.add("chat");
 
+    // Replace newlines with <br><br> for line breaks (inline text)
+    let formattedText = text.replace(/\n/g, '<br><br>');
+
+    // Format ordered lists (e.g., 1. Item 1, 2. Item 2)
+    formattedText = formattedText.replace(/(\d+\.)\s+/g, '<li>').replace(/<\/li><li>/g, '</li><li>').replace(/<\/li>/g, '</li>');
+    formattedText = formattedText.replace(/(\d+\.)\s+/g, '<ol><li>'); // Open the ordered list
+
+    // Format unordered lists (e.g., - Item, * Item, • Item)
+    formattedText = formattedText.replace(/(^|\n)([-*•])\s+/g, (match, p1, p2) => {
+        if (p1 === '\n') return '<li>'; // Start a new unordered list
+        return `<li>`; // Add an unordered list item
+    });
+    formattedText = formattedText.replace(/<\/li><li>/g, '</li><li>'); // Ensure list items are properly enclosed
+    formattedText = formattedText.replace(/<\/li>/g, '</li>'); // Close the list properly
+    formattedText = formattedText.replace(/(\d+\.)\s+/g, '<ol><li>'); // Close the ordered list tag properly
+
+    // Detect if there are multiple lines by splitting the formatted text at the first line break
+    const lines = formattedText.split('<br><br>');
+    const firstLine = lines[0]; // The first line of text
+
+    // Create a styled version of the first line (bold and bigger font size) only for AI's response with multiple lines
+    let finalText = formattedText;
+    if (sender === 'ai') {
+        // Check if there are multiple lines (more than 1)
+        if (lines.length > 1) {
+            const styledFirstLine = `<span style="font-size: 1.3em; font-weight: bold;">${firstLine}</span>`;
+            const remainingText = lines.slice(1).join('<br><br>'); // Join the remaining lines after the first line
+            finalText = styledFirstLine + (remainingText ? '<br><br>' + remainingText : '');
+        }
+    }
+
+    // Now format the message, separating text from lists
+    const listMatches = text.match(/(^|\n)([-*•]|\d+\.)\s+/); // Detect if there are lists at all
+    const isList = listMatches !== null;
+
     if (sender === 'ai') {
         chat.classList.add("ai-message");
-        chat.innerHTML = `
-            <img src="https://cdn.glitch.global/75bcfb9b-05b5-4a7c-a5be-e94c063e143f/avatar.jpg?v=1727042473922" alt="">
-            <p class="msg">${text}</p>
-        `;
+        if (isList) {
+            // Wrap lists outside of <p> tags
+            chat.innerHTML = `
+                <img src="images/ai-avatar.jpg" alt="">
+                <div class="msg">${finalText}</div>
+            `;
+        } else {
+            chat.innerHTML = `
+                <img src="images/ai-avatar.jpg" alt=""/>
+                <p class="msg">${finalText}</p>
+            `;
+        }
     } else {
         chat.classList.add("user-message");
-        chat.innerHTML = `
-            <img src="https://cdn.glitch.global/75bcfb9b-05b5-4a7c-a5be-e94c063e143f/empty%20avatar%20copy.jpg?v=1727042620275" alt="">
-            <p class="msg">${text}</p>
-        `;
+        if (isList) {
+            // Wrap lists outside of <p> tags for user messages
+            chat.innerHTML = `
+                <img src="images/user-avatar.jpg" alt=""/>
+                <div class="msg">${finalText}</div>
+            `;
+        } else {
+            chat.innerHTML = `
+                <img src="images/user-avatar.jpg" alt=""/>
+                <p class="msg">${finalText}</p>
+            `;
+        }
     }
 
     chatbox.appendChild(chat);
-    chatbox.scrollTop = chatbox.scrollHeight; 
+    chatbox.scrollTop = chatbox.scrollHeight;
 }
 
 // Log event function
