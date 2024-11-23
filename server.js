@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const axios = require('axios'); // Import axios here
 const fs = require('fs');
 const path = require('path');
-const csv = require('csv-parser');
+/* const csv = require('csv-parser'); */
 
 // OpenAI initialization
 const openai = new OpenAI({
@@ -18,7 +18,7 @@ const ChunkEmbedding = require('./models/ChunkEmbedding');  // Import the ChunkE
 const Participant = require('./models/Participant'); // Import the Participant model
 
 // Function to read the CSV file with participants and insert records into MongoDB
-function importCSVToDatabase() {
+/* function importCSVToDatabase() {
     const participants = [];
     
     // Read and parse the CSV file
@@ -38,10 +38,10 @@ function importCSVToDatabase() {
                 console.error('Error inserting participants:', error);
             }
         });
-}
+} */
 
 // Call the function to import participants from CSV when the server starts
-importCSVToDatabase();
+/* importCSVToDatabase(); */
 
 // In-memory store for chunk embeddings
 let chunkEmbeddingsStore = [];  // This will hold the chunk embeddings for testing purposes
