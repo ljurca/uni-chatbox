@@ -14,6 +14,19 @@ if (!participantID) {
  window.location.href = 'index.html'; 
 }
 
+// Retrieve 'firstName' from localStorage
+const firstName = localStorage.getItem('firstName');
+
+// Check if 'firstName' exists and update the placeholder
+if (firstName) {
+    const userNameElement = document.getElementById('userName');
+    if (userNameElement) {
+        userNameElement.textContent = firstName;
+    }
+} else {
+    console.warn("No firstName found in localStorage.");
+}
+
 // Add a sendMessage() function to handle sending messages
 async function sendMessage() {
     // Retrieve the user input from the input field and remove whitespace
